@@ -1,0 +1,20 @@
+.statistics {
+	@apply flex items-stretch mt-10;
+	.block {
+		@apply air-block w-max;
+		table {
+			@apply w-full;
+		}
+	}
+
+	.popularProducts {
+		@apply text-left p-5 overflow-auto w-full;
+		@media (min-width: 768px) {
+			@apply w-max;
+		}
+
+		.img {
+			@apply rounded-layout shadow-lg;
+		}
+	}
+}

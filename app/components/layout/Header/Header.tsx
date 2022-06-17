@@ -1,40 +1,70 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
-import {
-	backgroundStones,
-	breadcrumbs,
-	checkbox,
-	li,
-	mail,
-	mailYellow,
-	phone,
-	phoneYellow,
-	popupIcon,
-	promo,
-	rusLang,
-	sliderNext,
-	sliderPrev,
-	title,
-} from '@/assets/img/images'
+import Button from '@/components/ui/form-elements/Button'
+
+import { useAuth } from '@/hooks/useAuth'
+import { useOutsideAlerter } from '@/hooks/useOutsideAlerter'
+import { useRenderClient } from '@/hooks/useRenderClient'
+
+import { mail, phone } from '@/assets/img/images'
 
 import { classes } from '@/utils/classes'
 
+import { getAdminHomeUrl } from './../../../config/url.config'
 import styles from './Header.module.scss'
 import Menu from './Menu/Menu'
 import { HeaderMenu } from './Menu/menu.data'
 
+const scrollOptions = {
+	reserveScrollBarGap: true,
+}
+
 const Header: FC = () => {
+	const { user } = useAuth()
+	const { isRenderClient } = useRenderClient()
+
+	const { isComponentVisible, setIsComponentVisible } = useOutsideAlerter(false)
+
+	useEffect(() => {
+		const targetElement = document.body
+
+		isComponentVisible
+			? disableBodyScroll(targetElement, scrollOptions)
+			: enableBodyScroll(targetElement)
+	}, [isComponentVisible])
+
 	return (
-		<header className={classes('header', styles)}>
+		<header
+			className={cn(
+				{ [styles['menu-open']]: isComponentVisible },
+				classes('header', styles)
+			)}
+		>
 			<div className={classes('header__top', styles)}>
 				<div className="header__container">
 					<div className={classes('header__top-wrapper', styles)}>
-						<div className={classes('header__top-left', styles)}>
+						<div
+							className={cn({
+								['flex items-center']: true,
+								[classes('header__top-left', styles)]: true,
+							})}
+						>
 							<div className={classes('header__top-name', styles)}>
 								StoneDecor OÜ
 							</div>
+							{isRenderClient && user && (
+								<Link href={getAdminHomeUrl()}>
+									<a className="ml-4 h-4">
+										<Button className="h-4 !pt-0 !pb-0 !pl-2 !pr-2">
+											Редактировать
+										</Button>
+									</a>
+								</Link>
+							)}
 						</div>
 						<div className={classes('header__top-right', styles)}>
 							<Link
@@ -64,6 +94,7 @@ const Header: FC = () => {
 					<div className={classes('header__body', styles)}>
 						<button
 							type="button"
+							onClick={() => setIsComponentVisible(!isComponentVisible)}
 							className={classes('menu__icon icon-menu', styles)}
 						>
 							<span></span>
@@ -78,14 +109,14 @@ const Header: FC = () => {
 						</div>
 						<Menu menu={HeaderMenu} />
 						<div className={classes('header__lang', styles)}>
-							<select name="form[]" className={classes('form', styles)}>
+							{/* <select name="form[]" className={classes('form', styles)}>
 								<option data-asset="img/rus.svg" defaultValue="1">
 									RU
 								</option>
 								<option data-asset="img/rus.svg" defaultValue="2">
 									EE
 								</option>
-							</select>
+							</select> */}
 						</div>
 					</div>
 				</div>

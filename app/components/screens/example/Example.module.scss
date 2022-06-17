@@ -1,0 +1,35 @@
+@supports (
+	margin-top: clamp(0.8125rem, -1.2629716981rem + 10.3773584906vw, 3.5625rem)
+) {
+	.examples__title {
+		margin-top: clamp(0.8125rem, -1.2629716981rem + 10.3773584906vw, 3.5625rem);
+	}
+}
+@supports not (
+	margin-top: clamp(0.8125rem, -1.2629716981rem + 10.3773584906vw, 3.5625rem)
+) {
+	.examples__title {
+		margin-top: calc(0.8125rem + 2.75 * (100vw - 20rem) / 26.5);
+	}
+}
+@supports (
+	margin-top: clamp(0.25rem, -2.2971698113rem + 12.7358490566vw, 3.625rem)
+) {
+	.examples__body {
+		margin-top: clamp(0.25rem, -2.2971698113rem + 12.7358490566vw, 3.625rem);
+	}
+}
+@supports not (
+	margin-top: clamp(0.25rem, -2.2971698113rem + 12.7358490566vw, 3.625rem)
+) {
+	.examples__body {
+		margin-top: calc(0.25rem + 3.375 * (100vw - 20rem) / 26.5);
+	}
+}
+
+.examples__item img {
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}

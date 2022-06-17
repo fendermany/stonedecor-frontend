@@ -11,7 +11,7 @@ import { IMenu } from './menu.interface'
 const Menu: FC<{ menu: IMenu }> = ({ menu: { items, title, icon } }) => {
 	return (
 		<>
-			<div className={classes('footer__column', styles)}>
+			<div className="footer__column">
 				<h4 className="flex items-center">
 					<Image src={icon} alt="products" draggable={false} />
 					<span className="ml-2">{title}</span>

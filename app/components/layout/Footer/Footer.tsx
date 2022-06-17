@@ -6,29 +6,35 @@ import {
 	facebook,
 	mailYellow,
 	phoneYellow,
+	productsIcon,
 	viber,
 	whatssapp,
 } from '@/assets/img/images'
 
 import { classes } from '@/utils/classes'
 
+import { useCategoriesMenu } from '../../../hooks/useCategoriesMenu'
+
 import styles from './Footer.module.scss'
 import Menu from './Menu/Menu'
-import { footerMenu1, footerMenu2, footerMenu3 } from './Menu/menu.data'
+import { footerMenu2, footerMenu3 } from './Menu/menu.data'
 
 const Footer: FC = () => {
+	const { data } = useCategoriesMenu()
+
 	return (
 		<footer className={classes('footer', styles)}>
 			<div className="footer__container">
 				<div className={classes('footer__logo', styles)}>
-					<a href="/">
-						{' '}
-						<span>Stone</span>
-						<span>Decor</span>{' '}
-					</a>
+					<Link href="/">
+						<a>
+							<span>Stone</span>
+							<span>Decor</span>
+						</a>
+					</Link>
 				</div>
 				<div className={classes('footer__body', styles)}>
-					<div className={classes('footer__column', styles)}>
+					<div className="footer__column">
 						<span>StoneDecor OÜ</span>
 						<span>Reg. nr: 12086917</span>
 						<span>
@@ -67,7 +73,13 @@ const Footer: FC = () => {
 							</li>
 						</ul>
 					</div>
-					<Menu menu={footerMenu1} />
+					<Menu
+						menu={{
+							title: 'Продукция',
+							icon: productsIcon,
+							items: data || [],
+						}}
+					/>
 					<Menu menu={footerMenu2} />
 					<Menu menu={footerMenu3} />
 				</div>

@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC, ReactNode } from 'react'
 
 import Footer from './Footer/Footer'
@@ -11,9 +12,9 @@ type Props = {
 
 const Layout: FC<Props> = ({ children, wrapperName }) => {
 	return (
-		<div className={styles.wrapper}>
+		<div className={cn(`${wrapperName}`, styles.wrapper)}>
 			<Header />
-			<main className={`page ${wrapperName}`}>{children}</main>
+			<main className="page">{children}</main>
 			<Footer />
 		</div>
 	)

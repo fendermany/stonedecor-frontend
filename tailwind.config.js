@@ -23,6 +23,9 @@ module.exports = {
 				900: '#191B1F',
 				950: '#101215',
 			},
+			red: {
+				500: 'rgb(239 68 68)',
+			},
 			transparent: colors.transparent,
 		},
 		extend: {
@@ -30,13 +33,20 @@ module.exports = {
 				0.5: '0.12rem',
 				layout: '2.75rem',
 			},
+			fontSize: {
+				'2lg': '1.38rem',
+			},
+			borderRadius: {
+				image: '0.5rem',
+				layout: '0.8rem',
+			},
+			transitionTimingFunction: {
+				DEFAULT: 'ease-in-out',
+			},
+			transitionDuration: {
+				DEFAULT: '200ms',
+			},
 			keyframes: {
-				transitionTimingFunction: {
-					DEFAULT: 'ease-in-out',
-				},
-				transitionDuration: {
-					DEFAULT: '200ms',
-				},
 				fade: {
 					from: { opacity: 0 },
 					to: { opacity: 1 },
@@ -59,17 +69,28 @@ module.exports = {
 				fade: 'fade .5s ease-in-out',
 				scaleIn: 'scaleIn .35s ease-in-out',
 			},
+			zIndex: {
+				1: '1',
+				2: '2',
+				3: '3',
+			},
 		},
 	},
 	plugins: [
+		require('@tailwindcss/forms'),
+		require('@tailwindcss/aspect-ratio'),
 		plugin(({ addComponents, theme, addUtilities }) => {
 			addComponents({
 				'.btn-primary': {
 					backgroundColor: primary,
 					color: '#fff',
+					borderRadius: '0.65rem',
 					transition: 'background-color .3s ease-in-out',
 					'&:hover': {
-						backgroundColor: '#1b998b',
+						backgroundColor: '#2cac9e',
+					},
+					'&:active': {
+						backgroundColor: '#198276',
 					},
 				},
 				'.text-link': {
@@ -91,11 +112,24 @@ module.exports = {
 			}),
 				addUtilities({
 					'.text-shadow': {
-						textShadow: '1px 1px rgba(0,0,0,.4)',
+						textShadow: '1px 1px rgba(0, 0, 0, 0.4)',
 					},
+
 					'.outline-border-none': {
 						outline: 'none',
 						border: 'none',
+					},
+
+					'.flex-center-between': {
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'space-between',
+					},
+
+					'.image-like-bg': {
+						objectPosition: 'center',
+						objectFit: 'cover',
+						pointerEvents: 'none',
 					},
 				})
 		}),

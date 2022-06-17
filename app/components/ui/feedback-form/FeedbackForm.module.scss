@@ -1,0 +1,61 @@
+.feedback-form {
+	max-width: 453px;
+	width: 100%;
+}
+
+.form__inner {
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-rows: 1fr;
+	-ms-grid-columns: auto 20px 1fr;
+	grid-template: 1fr / auto 1fr;
+	-webkit-column-gap: 20px;
+	-moz-column-gap: 20px;
+	column-gap: 20px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+@supports (
+	margin-top: clamp(0.625rem, 0.4973404255rem + 0.6382978723vw, 1rem)
+) {
+	.form__inner {
+		margin-top: clamp(0.625rem, 0.4973404255rem + 0.6382978723vw, 1rem);
+	}
+}
+@supports not (
+	margin-top: clamp(0.625rem, 0.4973404255rem + 0.6382978723vw, 1rem)
+) {
+	.form__inner {
+		margin-top: calc(0.625rem + 0.375 * (100vw - 20rem) / 58.75);
+	}
+}
+.feedback-form textarea {
+	padding: 12px;
+}
+@supports (height: clamp(8.125rem, 7.4867021277rem + 3.1914893617vw, 10rem)) {
+	.feedback-form textarea {
+		height: clamp(8.125rem, 7.4867021277rem + 3.1914893617vw, 10rem);
+	}
+}
+@supports not (
+	height: clamp(8.125rem, 7.4867021277rem + 3.1914893617vw, 10rem)
+) {
+	.feedback-form textarea {
+		height: calc(8.125rem + 1.875 * (100vw - 20rem) / 58.75);
+	}
+}
+@supports (
+	width: clamp(11.25rem, 7.9481132075rem + 16.5094339623vw, 15.625rem)
+) {
+	.feedback-form input {
+		width: clamp(11.25rem, 7.9481132075rem + 16.5094339623vw, 15.625rem);
+	}
+}
+@supports not (
+	width: clamp(11.25rem, 7.9481132075rem + 16.5094339623vw, 15.625rem)
+) {
+	.feedback-form input {
+		width: calc(11.25rem + 4.375 * (100vw - 20rem) / 26.5);
+	}
+}

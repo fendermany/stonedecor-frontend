@@ -4,11 +4,11 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 100%;
-	z-index: 1000;
+	width: 100vw;
+	z-index: 998;
 }
 
-.menu-open .header {
+.header.menu-open {
 	background: #1e1d1c;
 }
 
@@ -387,6 +387,7 @@
 
 .menu__item {
 	font-weight: 300;
+	cursor: pointer;
 	position: relative;
 	&.active {
 		@apply border-b border-b-primary border-solid;
@@ -537,4 +538,25 @@
 	.icon-menu {
 		display: none;
 	}
+}
+
+.menu__list-sub {
+	background: rgba(30, 29, 28);
+	padding: 6px;
+	&--wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.menu__item-sub {
+	& + .menu__item-sub {
+		margin-top: 6px;
+	}
+}
+
+.menu__link-sub {
+	font-weight: 300;
+	font-size: 13px;
+	line-height: 140%;
 }

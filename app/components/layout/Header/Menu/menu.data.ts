@@ -3,16 +3,22 @@ import { IMenu } from './menu.interface'
 export const HeaderMenu: IMenu = {
 	items: [
 		{
-			link: '/products',
-			title: 'Продукция',
-		},
-		{
-			link: '/examples',
-			title: 'Примеры работ',
-		},
-		{
 			link: '/info',
 			title: 'Информация',
+			submenu: [
+				{
+					title: 'Установка',
+					link: '/info/installation',
+				},
+				{
+					title: 'Технология',
+					link: '/info/technology',
+				},
+				{
+					title: 'Оплата и доставка',
+					link: '/info',
+				},
+			],
 		},
 		{
 			link: '/contacts',
@@ -24,5 +30,3 @@ export const HeaderMenu: IMenu = {
 		},
 	],
 }
-
-
