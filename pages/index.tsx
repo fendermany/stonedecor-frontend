@@ -22,7 +22,7 @@ const HomePage: NextPage<IHome> = (props) => {
 	return <Home {...props} />
 }
 
-export const getStaticProps = async ({ locale }) => {
+export const getStaticProps = async ({ locale }: { locale: string }) => {
 	try {
 		const { data: products } = await ProductService.getProducts()
 		const { data: dataCategories } = await CategoryService.getCategories()
