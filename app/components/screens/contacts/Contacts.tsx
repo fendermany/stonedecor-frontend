@@ -1,21 +1,15 @@
 import { Box } from '@mui/material'
 import cn from 'classnames'
 import Image from 'next/image'
-import Link from 'next/link'
-import { FC } from 'react'
+import { CModalProvider } from 'providers/ModalProvider/ModalProvider'
+import { FC, useContext } from 'react'
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs/Breadcrumbs'
 import Layout from '@/components/layout/Layout'
 import PromoSlider from '@/components/layout/PromoSlider/PromoSlider'
+import Social from '@/components/layout/Social/Social'
 
-import {
-	facebook,
-	mailYellow,
-	phoneYellow,
-	title,
-	viber,
-	whatssapp,
-} from '@/assets/img/images'
+import { mailYellow, phoneYellow, title } from '@/assets/img/images'
 
 import { classes } from '@/utils/classes'
 import Meta from '@/utils/meta/Meta'
@@ -33,6 +27,8 @@ const containerStyle = {
 }
 
 const Contacts: FC<IContacts> = ({ slides }) => {
+	const { setModal } = useContext(CModalProvider)
+
 	return (
 		<Layout wrapperName="contacts header-black">
 			<Meta
@@ -67,31 +63,12 @@ const Contacts: FC<IContacts> = ({ slides }) => {
 									info@stonedecor.eu
 								</a>
 							</span>
-							<ul className="social">
-								<li>
-									<Link href="#">
-										<a>
-											<Image src={facebook} alt="facebook" />
-										</a>
-									</Link>
-								</li>
-								<li>
-									<Link href="#">
-										<a>
-											<Image src={whatssapp} alt="whatsapp" />
-										</a>
-									</Link>
-								</li>
-								<li>
-									<Link href="#">
-										<a>
-											<Image src={viber} alt="viber" />
-										</a>
-									</Link>
-								</li>
-							</ul>
+							<Social />
 						</div>
 						<button
+							onClick={() =>
+								setModal({ show: true, product: 'Страница контактов' })
+							}
 							type="submit"
 							className={cn('button', classes('contacts__btn', styles))}
 						>

@@ -5,6 +5,8 @@ import { FC } from 'react'
 import { A11y, Autoplay, EffectFade, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import Description from '@/components/ui/heading/Description'
+
 import { classes } from '@/utils/classes'
 
 import styles from '../Home.module.scss'
@@ -24,7 +26,7 @@ const Promo: FC<ISlider> = ({ slides, buttonTitle = 'Подробнее' }) => {
 			wrapperTag="ul"
 			effect="fade"
 			autoplay={{
-				delay: 3000,
+				delay: 10000,
 				disableOnInteraction: false,
 			}}
 			pagination={{
@@ -46,9 +48,10 @@ const Promo: FC<ISlider> = ({ slides, buttonTitle = 'Подробнее' }) => {
 						<div className={classes('home__promo-title', styles)}>
 							{slide.name}
 						</div>
-						<h2 className={classes('home__promo-descr', styles)}>
-							{slide.subTitle}
-						</h2>
+						<Description
+							className={classes('home__promo-descr', styles)}
+							text={slide.subTitle}
+						/>
 						<button
 							onClick={() => push(slide.link)}
 							type="button"

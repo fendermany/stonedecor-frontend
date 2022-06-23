@@ -26,6 +26,7 @@ const nextConfig = {
 	images: {
 		dangerouslyAllowSVG: true,
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+		domains: ['heroku-buckert.s3.eu-north-1.amazonaws.com'],
 	},
 	i18n,
 }

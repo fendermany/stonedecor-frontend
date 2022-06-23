@@ -29,7 +29,7 @@ const Product: FC<IProductPage> = ({ product, slides }) => {
 	useUpdateCountOpened(product.slug)
 	return (
 		<Layout wrapperName="product header-black">
-			<Meta title={product.name} description={product.description}>
+			<Meta title={product.name} description={product.shortDescription}>
 				<PromoSlider slides={slides} />
 				<Breadcrumbs title={product.name} />
 				<div className={classes('product__main', styles)}>

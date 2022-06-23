@@ -4,9 +4,12 @@ import Example from '@/components/screens/example/Example'
 import { ISlide } from '@/components/screens/home/promo/slider.interface'
 
 import { ICategory } from '@/shared/types/category.types'
+import { IProduct } from '@/shared/types/product.types'
 
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product.service'
+
+import { shuffle } from '@/utils/shuffle'
 
 import { getProductUrl } from '@/config/url.config'
 
@@ -38,13 +41,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			category._id,
 		])
 
-		const slides: ISlide[] = products.slice(0, 3).map((p) => ({
-			_id: p._id,
-			link: getProductUrl(p.slug),
-			subTitle: p.shortDescription,
-			name: p.name,
-			bigPoster: p.poster,
-		}))
+		const slides: ISlide[] = shuffle(products)
+			.slice(0, 5)
+			.map((p: IProduct) => ({
+				_id: p._id,
+				link: getProductUrl(p.slug),
+				subTitle: p.shortDescription,
+				name: p.name,
+				bigPoster: p.poster,
+			}))
 
 		return {
 			props: {

@@ -2,19 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import {
-	facebook,
-	mailYellow,
-	phoneYellow,
-	productsIcon,
-	viber,
-	whatssapp,
-} from '@/assets/img/images'
+import { mailYellow, phoneYellow, productsIcon } from '@/assets/img/images'
 
 import { classes } from '@/utils/classes'
 
 import { useCategoriesMenu } from '../../../hooks/useCategoriesMenu'
 
+import Social from './../Social/Social'
 import styles from './Footer.module.scss'
 import Menu from './Menu/Menu'
 import { footerMenu2, footerMenu3 } from './Menu/menu.data'
@@ -49,29 +43,7 @@ const Footer: FC = () => {
 								<a className="link ml-2 block">info@stonedecor.eu</a>
 							</Link>
 						</span>
-						<ul className="social">
-							<li>
-								<Link href="#">
-									<a>
-										<Image src={facebook} alt="facebook" />
-									</a>
-								</Link>
-							</li>
-							<li>
-								<Link href="#">
-									<a>
-										<Image src={whatssapp} alt="whatsapp" />
-									</a>
-								</Link>
-							</li>
-							<li>
-								<Link href="#">
-									<a>
-										<Image src={viber} alt="viber" />
-									</a>
-								</Link>
-							</li>
-						</ul>
+						<Social />
 					</div>
 					<Menu
 						menu={{

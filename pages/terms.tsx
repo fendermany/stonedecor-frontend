@@ -8,9 +8,11 @@ import {
 } from '@/components/layout/InfoTemplate/info.types'
 import { ISlide } from '@/components/screens/home/promo/slider.interface'
 
+import { IProduct } from '@/shared/types/product.types'
+
 import { ProductService } from '@/services/product.service'
 
-import { getCategoriesList } from '@/utils/product/getCategoriesList'
+import { shuffle } from '@/utils/shuffle'
 
 import { getProductUrl } from '@/config/url.config'
 
@@ -152,13 +154,15 @@ export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const { data: products } = await ProductService.getProducts()
 
-		const slides: ISlide[] = products.slice(0, 3).map((p) => ({
-			_id: p._id,
-			link: getProductUrl(p.slug),
-			subTitle: getCategoriesList(p.types),
-			name: p.name,
-			bigPoster: p.poster,
-		}))
+		const slides: ISlide[] = shuffle(products)
+			.slice(0, 5)
+			.map((p: IProduct) => ({
+				_id: p._id,
+				link: getProductUrl(p.slug),
+				subTitle: p.shortDescription,
+				name: p.name,
+				bigPoster: p.poster,
+			}))
 
 		return {
 			props: {

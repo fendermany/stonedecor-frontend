@@ -8,7 +8,7 @@ import { IProduct } from '@/shared/types/product.types'
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product.service'
 
-import { getCategoryUrl, getProductUrl } from '@/config/url.config'
+import { getCategoryUrl } from '@/config/url.config'
 
 import ErrorPage404 from '../404'
 

@@ -1,12 +1,11 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import PhoneInput from 'react-phone-number-input/react-hook-form-input'
 
-import { IFeedbackForm } from '@/shared/types/feedback.types'
+import Social from '@/components/layout/Social/Social'
 
-import { facebook, viber, whatssapp } from '@/assets/img/images'
+import { IFeedbackForm } from '@/shared/types/feedback.types'
 
 import { classes } from '@/utils/classes'
 
@@ -120,29 +119,7 @@ const FeedbackForm: FC<IFeedbackProps> = ({ id, product }) => {
 				<button type="submit" className="button">
 					Отправить
 				</button>
-				<ul className="social">
-					<li>
-						<Link href="#">
-							<a>
-								<Image src={facebook} alt="facebook" />
-							</a>
-						</Link>
-					</li>
-					<li>
-						<Link href="#">
-							<a>
-								<Image src={whatssapp} alt="whatsapp" />
-							</a>
-						</Link>
-					</li>
-					<li>
-						<Link href="#">
-							<a>
-								<Image src={viber} alt="viber" />
-							</a>
-						</Link>
-					</li>
-				</ul>
+				<Social />
 			</div>
 			<input hidden type="text" value={productPage} {...register('product')} />
 		</form>

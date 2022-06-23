@@ -7,10 +7,12 @@ import { ICategoryItem } from '@/components/screens/home/categories/category.int
 import { IHome } from '@/components/screens/home/home.types'
 import { ISlide } from '@/components/screens/home/promo/slider.interface'
 
+import { IProduct } from '@/shared/types/product.types'
+
 import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product.service'
 
-import { getCategoriesList } from '@/utils/product/getCategoriesList'
+import { shuffle } from '@/utils/shuffle'
 
 import {
 	getCategoryUrl,
@@ -27,13 +29,15 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 		const { data: products } = await ProductService.getProducts()
 		const { data: dataCategories } = await CategoryService.getCategories()
 
-		const slides: ISlide[] = products.map((p) => ({
-			_id: p._id,
-			link: getProductUrl(p.slug),
-			subTitle: getCategoriesList(p.types),
-			name: p.name,
-			bigPoster: p.poster,
-		}))
+		const slides: ISlide[] = shuffle(products)
+			.slice(0, 5)
+			.map((p: IProduct) => ({
+				_id: p._id,
+				link: getProductUrl(p.slug),
+				subTitle: p.shortDescription,
+				name: p.name,
+				bigPoster: p.photos[Math.floor(Math.random() * p.photos.length)],
+			}))
 
 		const categories: ICategoryItem[] = dataCategories
 			.filter((c) => c.image)
