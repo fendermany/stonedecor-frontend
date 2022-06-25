@@ -11,7 +11,7 @@ import Examples from './examples/Examples'
 import { IHome } from './home.types'
 import Promo from './promo/Promo'
 
-const Home: FC<IHome> = ({ slides, categories, examples, locale }) => {
+const Home: FC<IHome> = ({ slides, categories, examples }) => {
 	return (
 		<Layout wrapperName={'home'}>
 			<Meta
