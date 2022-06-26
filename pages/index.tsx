@@ -1,6 +1,5 @@
 import { errorCatch } from 'api/api.helpers'
 import type { NextPage } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Home from '@/components/screens/home/Home'
 import { ICategoryItem } from '@/components/screens/home/categories/category.interface'
@@ -24,7 +23,7 @@ const HomePage: NextPage<IHome> = (props) => {
 	return <Home {...props} />
 }
 
-export const getStaticProps = async ({ locale }: { locale: string }) => {
+export const getStaticProps = async () => {
 	try {
 		const { data: products } = await ProductService.getProducts()
 		const { data: dataCategories } = await CategoryService.getCategories()
@@ -62,7 +61,6 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 				slides,
 				categories,
 				examples,
-				...(await serverSideTranslations(locale, ['home', 'header', 'footer'])),
 			} as IHome,
 			revalidate: 60,
 		}

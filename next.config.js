@@ -1,5 +1,3 @@
-const { i18n } = require('./next-i18next.config')
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -28,7 +26,6 @@ const nextConfig = {
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 		domains: ['heroku-buckert.s3.eu-north-1.amazonaws.com'],
 	},
-	i18n,
 }
 
 module.exports = nextConfig

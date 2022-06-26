@@ -1,4 +1,3 @@
-import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import 'swiper/scss/effect-fade'
 
@@ -22,4 +21,4 @@ function MyApp({ Component, pageProps }: TypeAppProps) {
 	)
 }
 
-export default appWithTranslation(MyApp)
+export default MyApp
