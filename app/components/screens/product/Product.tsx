@@ -55,7 +55,7 @@ const Product: FC<IProductPage> = ({ product, slides }) => {
 								</div>
 							</div>
 						</div>
-						<button
+						{/* <button
 							onClick={() => setModal({ show: true, product: product.name })}
 							className={cn({
 								[classes('product__main-btn', styles)]: true,
@@ -63,7 +63,7 @@ const Product: FC<IProductPage> = ({ product, slides }) => {
 							})}
 						>
 							Заказать
-						</button>
+						</button> */}
 					</div>
 				</div>
 				<div className={classes('product__content', styles)}>

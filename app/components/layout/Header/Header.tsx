@@ -2,6 +2,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC, useEffect } from 'react'
 
 import Button from '@/components/ui/form-elements/Button'
@@ -26,6 +27,7 @@ const scrollOptions = {
 const Header: FC = () => {
 	const { user } = useAuth()
 	const { isRenderClient } = useRenderClient()
+	const router = useRouter()
 
 	const { isComponentVisible, setIsComponentVisible } = useOutsideAlerter(false)
 
@@ -36,6 +38,17 @@ const Header: FC = () => {
 			? disableBodyScroll(targetElement, scrollOptions)
 			: enableBodyScroll(targetElement)
 	}, [isComponentVisible])
+
+	useEffect(() => {
+		const handleRouteChange = () => {
+			setIsComponentVisible(false)
+		}
+		router.events.on('routeChangeComplete', handleRouteChange)
+
+		return () => {
+			router.events.off('routeChangeComplete', handleRouteChange)
+		}
+	}, [router.events])
 
 	return (
 		<header
