@@ -7,7 +7,6 @@
 	z-index: -1;
 }
 .home__promo-slider ul li {
-	@include fade-bg-gradient(180deg);
 	height: 100vh;
 	opacity: 0;
 	pointer-events: none;
@@ -49,7 +48,6 @@
 	pointer-events: all;
 }
 .home__promo-title {
-	font-family: 'Italiana';
 	line-height: 110%;
 	letter-spacing: 0.01em;
 	text-transform: uppercase;

@@ -14,7 +14,7 @@ const Error404: FC = () => {
 	const router = useRouter()
 
 	return (
-		<Meta title="Page not found">
+		<Meta title="Страница не найдена">
 			<div className="wrapper">
 				<div className={classes('page404__container', styles)}>
 					<div className={classes('page404__wrapper', styles)}>

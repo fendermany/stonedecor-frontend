@@ -820,7 +820,6 @@ textarea.input {
 	height: 100vh;
 	opacity: 0;
 	pointer-events: none;
-	@include fade-bg-gradient(180deg);
 }
 
 @supports (padding-top: clamp(11.125rem, 6.75rem + 21.875vw, 20.3125rem)) {
@@ -849,7 +848,6 @@ textarea.input {
 }
 
 .promo-title {
-	font-family: 'Italiana';
 	line-height: 110%;
 	letter-spacing: 0.01em;
 	text-transform: uppercase;
@@ -1461,7 +1459,6 @@ table tbody tr td:last-child {
 		}
 	}
 }
-
 
 .swiper-fade .swiper-slide {
 	pointer-events: all !important;
