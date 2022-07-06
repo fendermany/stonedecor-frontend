@@ -22,7 +22,7 @@ const PromoSlider: FC<IPromoSLider> = ({ slides }) => {
 				wrapperTag="ul"
 				effect="fade"
 				autoplay={{
-					delay: 10000,
+					delay: 20000,
 					disableOnInteraction: false,
 				}}
 				pagination={{

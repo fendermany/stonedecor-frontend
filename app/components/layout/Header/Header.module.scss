@@ -389,6 +389,8 @@
 	font-weight: 300;
 	cursor: pointer;
 	position: relative;
+	width: max-content;
+
 	&.active {
 		@apply border-b border-b-primary border-solid;
 	}

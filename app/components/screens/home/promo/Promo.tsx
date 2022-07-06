@@ -26,7 +26,7 @@ const Promo: FC<ISlider> = ({ slides, buttonTitle = 'Подробнее' }) => {
 			wrapperTag="ul"
 			effect="fade"
 			autoplay={{
-				delay: 10000,
+				delay: 20000,
 				disableOnInteraction: false,
 			}}
 			pagination={{
