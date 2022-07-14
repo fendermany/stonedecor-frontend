@@ -5,10 +5,11 @@ import Product from '@/components/screens/product/Product'
 
 import { IProduct } from '@/shared/types/product.types'
 
-import { CategoryService } from '@/services/category.service'
 import { ProductService } from '@/services/product.service'
 
-import { getCategoryUrl } from '@/config/url.config'
+import { shuffle } from '@/utils/shuffle'
+
+import { getProductUrl } from '@/config/url.config'
 
 import ErrorPage404 from '../404'
 
@@ -31,15 +32,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			String(params?.slug)
 		)
 
-		const { data: categories } = await CategoryService.getCategories()
+		const { data: products } = await ProductService.getProducts()
 
-		const slides: ISlide[] = categories.map((c) => ({
-			_id: c._id,
-			link: getCategoryUrl(c.slug),
-			subTitle: c.shortDescr,
-			name: c.name,
-			bigPoster: c.photos[Math.floor(Math.random() * c.photos.length)],
-		}))
+		const slides: ISlide[] = shuffle(products)
+			.slice(0, 5)
+			.map((p: IProduct) => ({
+				_id: p._id,
+				link: getProductUrl(p.slug),
+				subTitle: p.shortDescription,
+				name: p.name,
+				bigPoster: p.photos[Math.floor(Math.random() * p.photos.length)],
+			}))
 
 		return {
 			props: {
